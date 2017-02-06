@@ -14,14 +14,14 @@ export default {
       config.dev.assetsPublicPath,
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loader: ['babel-loader'],
+      use: ['babel-loader'],
       include: [path.join(projectRoot, 'src')],
       exclude: /node_modules/
     }, {
       test: /\.json$/,
-      loader: 'json'
+      use: 'json'
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url',
