@@ -1,7 +1,8 @@
 import path from 'path'
-import 'shelljs/global'
 import webpack from 'webpack'
+import 'shelljs/global'
 import ora from 'ora'
+
 import config from '../config'
 import webpackConfig from './webpack.config.prod'
 

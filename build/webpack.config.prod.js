@@ -7,7 +7,7 @@ import * as utils from './utils'
 import config from '../config'
 import webpackBaseConfig from './webpack.base'
 
-const styleLoaders = utils.styleLoaders({extract: true});
+const styleLoaders = utils.styleLoaders({extract: true})
 const webpackConfig = merge(webpackBaseConfig, {
   output: {
     path: config.build.assetsRoot,
@@ -20,6 +20,7 @@ const webpackConfig = merge(webpackBaseConfig, {
   plugins: [
     new ExtractTextPlugin(utils.assetsPath('css/[name].[chunkhash].css')),
     new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
       compress: {
         unused: true,
         dead_code: true,

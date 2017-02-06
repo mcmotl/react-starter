@@ -1,4 +1,5 @@
 import path from 'path'
+
 import config from '../config'
 import * as utils from './utils'
 const env = process.env.NODE_ENV
@@ -13,9 +14,14 @@ export default {
       config.build.assetsPublicPath :
       config.dev.assetsPublicPath,
   },
+  resolve: {
+    enforceExtension: false,
+    alias: {}
+  },
   module: {
     rules: [{
       test: /\.js$/,
+      enforce: 'pre',
       use: ['babel-loader'],
       include: [path.join(projectRoot, 'src')],
       exclude: /node_modules/

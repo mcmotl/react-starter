@@ -11,7 +11,6 @@ export const assetsPath = _path => {
 
 export const styleLoaders = options => {
   if (options.extract) {
-    const extractCss = new ExtractTextPlugin('/css/bundle.css')
     return {
       rules: [
         {
