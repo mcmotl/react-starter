@@ -4,6 +4,7 @@
     "dev": "NODE_ENV=development babel-node build/dev-server.js"
   },
   "devDependencies": {
+    "autoprefixer": "^6.7.2",
     "babel-core": "^6.22.1",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
@@ -19,6 +20,9 @@
     "node-sass": "^4.5.0",
     "opn": "^4.0.2",
     "ora": "^1.1.0",
+    "postcss-loader": "^1.2.2",
+    "postcss-smart-import": "^0.6.7",
+    "precss": "^1.4.0",
     "react-style-loader": "0.0.1",
     "sass-loader": "^4.1.1",
     "shelljs": "^0.7.6",

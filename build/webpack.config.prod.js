@@ -7,20 +7,23 @@ import * as utils from './utils'
 import config from '../config'
 import webpackBaseConfig from './webpack.base'
 
-const styleLoaders = utils.styleLoaders({extract: true})
 const webpackConfig = merge(webpackBaseConfig, {
+  devtool: "none",
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   module: {
-    ...styleLoaders
+    rules: [
+      {test: /\.scss$/i, use: ExtractTextPlugin.extract({use: ['css-loader', 'postcss-loader', 'sass-loader']})},
+      {test: /\.css$/, use: ExtractTextPlugin.extract({use: ['css-loader', 'postcss-loader']})}
+    ]
   },
   plugins: [
     new ExtractTextPlugin(utils.assetsPath('css/[name].[chunkhash].css')),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
       compress: {
         unused: true,
         dead_code: true,

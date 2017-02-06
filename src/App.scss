@@ -1,5 +1,13 @@
-.container {
-  h1 {
-    color: #ff0000;
-  }
+/* 支持POSTCSS */
+/* 自定义特性 */
+:root {
+  --heading-color: #ff0000;
+}
+
+/* 自定义选择器 */
+@custom-selector :--headings h1, h2, h3, h4, h5, h6;
+
+/* 用法 */
+:--headings {
+  color: var(--heading-color);
 }

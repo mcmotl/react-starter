@@ -6,4 +6,3 @@ ReactDom.render(
   <App />,
   document.getElementById('app')
 )
- var i =0;

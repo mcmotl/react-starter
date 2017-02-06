@@ -1,5 +1,4 @@
 import path from 'path'
-
 import config from '../config'
 import * as utils from './utils'
 const env = process.env.NODE_ENV

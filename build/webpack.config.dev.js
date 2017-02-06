@@ -2,22 +2,21 @@ import webpack from 'webpack'
 import merge from 'webpack-merge'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import FriendlyErrors from 'friendly-errors-webpack-plugin'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 import baseWebpackConfig from './webpack.base'
-import * as utils from './utils'
 
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
-const styleLoaders = utils.styleLoaders({extract: true})
 export default merge(baseWebpackConfig, {
-  devtool: '#eval-source-map',
+  devtool: '#source-map',
   module: {
-    ...styleLoaders
+    rules: [
+      {test: /\.css$/i, use: ['style-loader', 'css-loader', 'postcss-loader']},
+      {test: /\.scss$/i, use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']},
+    ]
   },
   plugins: [
-    new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
     new webpack.DefinePlugin({}),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
