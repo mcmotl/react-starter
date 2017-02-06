@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Project Title</title>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
 <div id="app"></div>
 
-<script type="text/javascript" src="/lib/react.min.js"></script>
-<script type="text/javascript" src="/lib/react-dom.min.js"></script>
-<script type="text/javascript" src="/lib/ReactRouter.min.js"></script>
+<% htmlWebpackPlugin.options.js.forEach(function(js){ %>
+<script type="text/javascript" src="<%= js %>"></script>
+<% }); %>
 </body>
 </html>

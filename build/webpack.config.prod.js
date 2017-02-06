@@ -11,8 +11,8 @@ const webpackConfig = merge(webpackBaseConfig, {
   devtool: "none",
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath('js/[name].js'),
+    chunkFilename: utils.assetsPath('js/[id].js')
   },
   module: {
     rules: [
@@ -21,7 +21,7 @@ const webpackConfig = merge(webpackBaseConfig, {
     ]
   },
   plugins: [
-    new ExtractTextPlugin(utils.assetsPath('css/[name].[chunkhash].css')),
+    new ExtractTextPlugin(utils.assetsPath('css/[name].css')),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       compress: {
@@ -32,15 +32,22 @@ const webpackConfig = merge(webpackBaseConfig, {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new HtmlWebpackPlugin({
+      title: 'React Project',
       filename: config.build.index,
       template: 'index.html',
       inject: true,
+      hash: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
         removeAttributeQuotes: false
       },
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
+      js: [
+        '/lib/react.min.js?v=15.4.2',
+        '/lib/react-dom.min.js?v=15.4.2',
+        '/lib/ReactRouter.min.js?v=3.0.2'
+      ]
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',

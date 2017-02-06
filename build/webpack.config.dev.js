@@ -22,10 +22,12 @@ export default merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
+      title: 'React Project Dev Mode',
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
+      js: []
     }),
-    new FriendlyErrors()
+    new FriendlyErrors(),
   ]
 })
